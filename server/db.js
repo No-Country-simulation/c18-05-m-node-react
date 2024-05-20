@@ -1,12 +1,19 @@
 import Sequelize from "sequelize";
-// import {
-//   USER_POSTGRET,
-//   PASSWORD_POSGRET,
-//   HOST_POSTGREST,
-//   NAME_DB,
-// } from "./src/config/envs.js";
 
-const sequelize = new Sequelize("eduTech", "postgres", "2001", {
+import * as dotenv from "dotenv";
+dotenv.config();
+
+const {
+  USER_POSTGRET,
+  PASSWORD_POSGRET,
+  HOST,
+} = process.env
+
+
+
+const sequelize = new Sequelize(
+  `postgres:${USER_POSTGRET}:${PASSWORD_POSGRET}@${HOST}/eduTech`,
+ {
   host: "localhost",
   dialect: "postgres",
 });
