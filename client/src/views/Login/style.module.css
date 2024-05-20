@@ -1,0 +1,34 @@
+
+
+main{
+    margin: 3rem;
+}
+.background-login{
+    background-color: #D5DBE1;
+    padding:3rem ;
+    margin: auto;
+    box-shadow: 2px 1px 10px 16px rgba(0, 0, 0, 0.109);
+
+    & :nth-child(1){
+        border-radius: 17px 0 0 17px;
+        width: 50%;
+        background-color: #fff;
+    }
+    & :nth-child(2){
+        border-radius:  0 17px 17px 0 ;
+        width: 50%;
+        background-color: #065AD8;
+
+    }
+}
+.flex-login{
+    display: flex;
+    height: 80vh;
+    min-width: 100%;
+}
+.form >*{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
