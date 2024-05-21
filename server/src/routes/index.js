@@ -2,13 +2,14 @@ import { Router } from "express";
 import studentsRouter from "./studentRouter.js";
 import adminRouter from './adminRoutes.js'
 import {debajaOdealta} from '../controllers/deleteController.js'
-import {login} from '../controllers/LoginController.js'
+
+import historyRouter from './HistoriaRoutes.js'
 const router = Router();
 
 router.put("/delete/:email", debajaOdealta);
-router.post("/login", login);
+
 
 router.use("/students", studentsRouter);
 router.use("/admin", adminRouter);
-
+router.use("/historia", historyRouter );
 export default router;
