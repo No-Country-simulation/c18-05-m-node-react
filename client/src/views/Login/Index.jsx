@@ -1,14 +1,8 @@
 import style from './login.module.css'
 import FormLogin from "./FormLogin";
 import SlideLogin from "./SlideLogin";
-import Portada1 from '../../assets/img/1.jpg'
-import Portada2 from '../../assets/img/2.jpg'
 
 const Index = () => {
-
-
-  
-
   return (
     <>
       <div className={style.containerLogin2}>
