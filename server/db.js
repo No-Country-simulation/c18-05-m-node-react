@@ -1,21 +1,18 @@
-import Sequelize from "sequelize";
 
-import * as dotenv from "dotenv";
-dotenv.config();
+import { Sequelize } from "sequelize";
+import { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } from "./src/config/envs.js";
+// import Students from "./src/models/Students.js";
+// import Historials from "./src/models/Historials.js";
 
-const {
-  USER_POSTGRET,
-  PASSWORD_POSGRET,
-  HOST,
-} = process.env
+export const sequelize = new Sequelize(
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+  {
+    logging: false,
+    native: false,
+  }
+);
 
-
-
-const sequelize = new Sequelize(
-  `postgres:${USER_POSTGRET}:${PASSWORD_POSGRET}@${HOST}/eduTech`,
- {
-  host: "localhost",
-  dialect: "postgres",
-});
-
+// Relación Users <-> Cart (uno a uno)
+// Students.hasOne(Historials);
+// Historials.belongsTo(Students);
 export default sequelize;
