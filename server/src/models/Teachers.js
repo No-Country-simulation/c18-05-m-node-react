@@ -1,4 +1,4 @@
-// prueba
+import { DataTypes } from "sequelize";
 
 export default function Teachers(sequelize) {
     const Teachers = sequelize.define("Teachers", {
