@@ -1,14 +1,42 @@
 import { useState } from "react";
-import style from './login.module.css'
+import style from "./login.module.css";
 
 const SlideLogin = () => {
-  const [slide, setSlide] = useState(false);
+  const [select, setSelect] = useState(1);
 
-  const handleChangeSlide = () => {
-    setSlide(!slide)
-  }
+  return (
+    <div className={style.containerSlider}>
+      <div className={style.slider}>
+        <input type="radio" name="slider" id="slideOne" defaultChecked />
+        <input type="radio" name="slider" id="slideTwo" />
+        <input type="radio" name="slider" id="slideThree" />
 
-  return <section className={`${style.imgContainer} ${ !slide ? '' : `${style.red}` }`} onClick={ handleChangeSlide }>img aca</section>;
+        <div className={style.buttons}>
+          <label htmlFor="slideOne" onClick={() => setSelect(1)}></label>
+          <label htmlFor="slideTwo" onClick={() => setSelect(2)}></label>
+          <label htmlFor="slideThree" onClick={() => setSelect(3)}></label>
+        </div>
+
+        <div className={style.contentSlider}>
+          {select === 1 && (
+            <div className={style.firstslide}>
+              <h1>SLIDE 1</h1>
+            </div>
+          )}
+          {select === 2 && (
+            <div className={style.secondslide}>
+              <h1>SLIDE 1</h1>
+            </div>
+          )}
+          {select === 3 && (
+            <div className={style.thirdslide}>
+              <h1>SLIDE 1</h1>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default SlideLogin;
