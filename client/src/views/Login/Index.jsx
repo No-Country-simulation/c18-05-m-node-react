@@ -1,8 +1,8 @@
 import style from './login.module.css'
-import FormLogin from "./formLogin";
-import SlideLogin from "./slideLogin";
+import FormLogin from "./FormLogin";
+import SlideLogin from "./SlideLogin";
 
-const index = () => {
+const Index = () => {
   return (
     <>
       <div className={style.containerLogin2}>
@@ -14,4 +14,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

@@ -30,4 +30,8 @@
     padding: 3rem;
     max-width: calc(50% - 1rem); /* Ajusta el ancho máximo para que no se estire más del 50% del contenedor principal */
   }
+
+  .red{
+    background: red;
+  }
   
