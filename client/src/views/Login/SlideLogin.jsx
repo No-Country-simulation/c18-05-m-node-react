@@ -1,15 +1,22 @@
-import { useState } from "react";
-import style from "./login.module.css";
+import { useState, useEffect } from "react";
+import style from "./slide.module.css";
 
 const SlideLogin = () => {
   const [select, setSelect] = useState(1);
 
+  useEffect(() => {
+    const intervalo = setInterval(() => {    
+      setSelect(prevSelect => (prevSelect === 3 ? 1 : prevSelect + 1));
+    }, 3000); 
+    return () => clearInterval(intervalo);
+  }, []);
+
   return (
     <div className={style.containerSlider}>
       <div className={style.slider}>
-        <input type="radio" name="slider" id="slideOne" defaultChecked />
-        <input type="radio" name="slider" id="slideTwo" />
-        <input type="radio" name="slider" id="slideThree" />
+        <input type="radio" name="slider" id="slideOne" checked={select === 1} readOnly />
+        <input type="radio" name="slider" id="slideTwo" checked={select === 2} readOnly/>
+        <input type="radio" name="slider" id="slideThree" checked={select === 3} readOnly/>
 
         <div className={style.buttons}>
           <label htmlFor="slideOne" onClick={() => setSelect(1)}></label>
