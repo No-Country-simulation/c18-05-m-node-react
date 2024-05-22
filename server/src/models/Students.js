@@ -52,6 +52,10 @@ export default function Students(sequelize) {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
+    rol: {
+      type: DataTypes.STRING,
+      defaultValue: "student",
+    },
   });
 
   return Students;

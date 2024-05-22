@@ -17,6 +17,10 @@ export default function Admin(sequelize) {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
+      rol: {
+        type: DataTypes.STRING,
+        defaultValue: "admin",
+      },
     },
     {
       freezeTableName: true,

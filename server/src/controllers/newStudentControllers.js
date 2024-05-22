@@ -39,11 +39,19 @@ export async function deleteStudent(id) {
   return student;
 }
 
-export async function getStudent(email) {
-  const user = await Students.findOne({ where: { email: email } });
+export async function getStudent(id) {
+  const user = await Students.findOne({ where: { id: id } });
   if (!user) {
     throw new Error("El usuario no existe");
   }
 
   return user;
+}
+
+export async function getAllStudents() {
+  const students = await Students.findAll();
+  if (!students) {
+    throw new Error("No se encontraron usuarios");
+  }
+  return students;
 }
