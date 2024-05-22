@@ -1,7 +1,8 @@
-import style1 from "./login.module.css";
-import style2 from "./LoginForm.module.css";
-import SessionGoogle from "./SessionGoogle";
-import SvgComponent from "./SvgLoginGoogle";
+import style1 from "../styles/login.module.css";
+import style2 from "../styles/LoginForm.module.css";
+// import SessionGoogle from "./SessionGoogle";
+// import SvgComponent from "./SvgLoginGoogle";
+import GoogleButton from "./GoogleButton";
 
 const FormLogin = () => {
 
@@ -16,7 +17,8 @@ const FormLogin = () => {
       </div>
 
       <div className={style2.GoogleLogin} >
-        <SessionGoogle/>
+        <GoogleButton/>
+        {/* <SessionGoogle/> */}
       </div>
       <div className={style2.divisorLoginGoogle__email_password}>
         <hr />
