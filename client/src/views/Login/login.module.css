@@ -14,15 +14,14 @@
     background: #fdfffc;
     display: flex;
     flex-direction: column;
-    
-    padding: 3rem;
+    padding: 2rem;
     gap: 1rem;
     box-sizing: border-box;
     min-width: 0;
     max-width: calc(100% - 1rem); /* Ajusta el ancho máximo para que no se estire más del 50% del contenedor principal */
   }
   
-  .imgContainer {
+  .imgContainer  {
     flex: 1;
     border-radius: 0px 10px 10px 0px;
     background: #065AD8;
@@ -30,6 +29,14 @@
     min-width: 0;
     max-width: calc(50% - 1rem); /* Ajusta el ancho máximo para que no se estire más del 50% del contenedor principal */
   }
+
+  @media screen and (max-width: 1000px) {
+    .imgContainer {
+      display: none;
+    }
+  }
+
+ 
   
 
   
