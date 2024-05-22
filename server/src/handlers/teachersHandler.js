@@ -2,7 +2,8 @@ import {
     newTeachers,
     deleteTeacher,
     getTeacher,
-    getAllTeacher
+    getAllTeacher,
+    updateTeacher
   } from "../controllers/TeachersControllers.js";
   export async function newTeacherHandler(req, res) {
     try {
@@ -58,7 +59,10 @@ import {
   
   export async function changeTeacherHandler(req, res) {
     try {
-      res.status(200).json({ message: "Change Teacher" });
+      const { id } = req.params;
+      const { name, lastName, email, phone } = req.body;
+      const resultTeacher = await updateTeacher(id, { name, lastName, email, phone });
+      res.status(200).json({ message: "Change Teacher", resultTeacher });
     } catch (error) {
       res.status(400).json({ error: error.message });
     }

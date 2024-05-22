@@ -58,3 +58,15 @@ export async function getAllTeacher() {
   //}
   return allTeachers;
 }
+
+export async function updateTeacher(id, updateData) {
+  const teacher = await Teachers.findOne({ where: { id } });
+
+  if (!teacher) {
+    throw new Error("El profesor no existe");
+  }
+  
+  await teacher.update(updateData);
+
+  return teacher;
+}
