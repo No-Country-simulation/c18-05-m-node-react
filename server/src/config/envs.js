@@ -1,13 +1,24 @@
-import * as dotenv from "dotenv";
+import dotenv from "dotenv";
 dotenv.config();
 
-export const { USER_POSTGRET, USER_PASSWORD, HOST, PORT, NAME_DB } =
-  process.env;
+const {
+  DB_USER,
+  DB_PASSWORD,
+  DB_HOST,
+  DB_NAME,
+  PORT,
+  CLAVE_API_SENDGRID,
+  ACOUNT_GMAIL_SENDGRID,
+  JWT_TOKEN_SECRET,
+} = process.env;
 
-// export default {
-//   USER_POSTGRET,
-//   USER_PASSWORD,
-//   HOST,
-//   PORT,
-//   NAME_DB,
-// };
+export {
+  DB_USER,
+  DB_PASSWORD,
+  DB_HOST,
+  DB_NAME,
+  PORT,
+  CLAVE_API_SENDGRID,
+  ACOUNT_GMAIL_SENDGRID,
+  JWT_TOKEN_SECRET,
+};

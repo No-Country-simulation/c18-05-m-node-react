@@ -1,10 +1,8 @@
-import {  DataTypes } from "sequelize";
-import { sequelize } from "../../db.js";
+import { DataTypes } from "sequelize";
 
-export const Parents = sequelize.define(
-  "parents",
-  {
-    idParents: {
+export default function Teachers(sequelize) {
+  const Teachers = sequelize.define("Teachers", {
+    id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
@@ -21,6 +19,9 @@ export const Parents = sequelize.define(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        isEmail: true,
+      },
     },
     password: {
       type: DataTypes.STRING,
@@ -30,11 +31,6 @@ export const Parents = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    childrenName: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false,
-    },
-
     fullName: {
       type: DataTypes.VIRTUAL,
       get() {
@@ -45,9 +41,11 @@ export const Parents = sequelize.define(
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
-  },
-  {
-    freezeTableName: true,
-    timestamps: false,
-  }
-);
+    role: {
+      type: DataTypes.STRING,
+      defaultValue: "teacher",
+    },
+  });
+
+  return Teachers;
+}

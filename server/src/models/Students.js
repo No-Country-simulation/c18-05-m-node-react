@@ -1,9 +1,7 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../../db.js";
 
-export const Student = sequelize.define(
-  "student",
-  {
+export default function Students(sequelize) {
+  const Students = sequelize.define("Students", {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -21,6 +19,9 @@ export const Student = sequelize.define(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        isEmail: true,
+      },
     },
     password: {
       type: DataTypes.STRING,
@@ -51,9 +52,11 @@ export const Student = sequelize.define(
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
-  },
-  {
-    freezeTableName: true,
-    timestamps: false,
-  }
-);
+    rol: {
+      type: DataTypes.STRING,
+      defaultValue: "student",
+    },
+  });
+
+  return Students;
+}
