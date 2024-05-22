@@ -9,12 +9,14 @@
   --outine: #065ad8;
   --fontLato: "Lato", sans-serif;
   --fontRoboto:"Roboto", sans-serif;
-   
+    
 }
 .formContainer_welcome {
   max-width: 30rem;
   width: 25rem;
-  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .formContainer_welcome > * {
   display: flex;
