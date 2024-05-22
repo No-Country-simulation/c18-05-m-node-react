@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import style from "./slide.module.css";
+import style from "../styles/slide.module.css";
 
 const SlideLogin = () => {
   const [select, setSelect] = useState(1);
