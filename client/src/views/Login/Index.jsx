@@ -1,6 +1,6 @@
-import style from '../container.module.css'
-import FormLogin from "../LoginActions/FormLogin";
-import SlideLogin from '../SlideLogin';
+import style from './container.module.css'
+import FormLogin from "./FormLogin";
+import SlideLogin from './SlideLogin';
 
 const Index = () => {
   return (

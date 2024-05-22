@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from './views/Home/Index'
-import Login from './views/Login/LoginActions/Index'
+import Login from './views/Login/Index'
 
 const App = () => {
 

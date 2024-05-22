@@ -1,4 +1,4 @@
-import style from "../LoginActions/StylesLogin/LoginForm.module.css";
+import style from "./LoginForm.module.css";
 
 function Svg() {
   return (

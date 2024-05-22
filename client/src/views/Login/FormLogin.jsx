@@ -1,6 +1,6 @@
-import style from "../LoginActions/StylesLogin/LoginForm.module.css";
-import style2 from "../container.module.css";
-import SvgComponent from './Svg'
+import style from "./LoginForm.module.css";
+import style2 from "./container.module.css";
+import SvgComponent from './SvgIconGoogleLogin'
 
 const FormLogin = () => {
 
@@ -27,7 +27,7 @@ const FormLogin = () => {
         <input type="password" name="" id="password" placeholder="Contraseña" />
 
         <section className={style.section_checkbox_rememberme}>
-          <div className={style.div_checkBox_recurdame}>
+          <div className={style.div_checkBox_recuerdame}>
             <input type="checkbox" name="checkbox" id="checkbox" />
             <label style={{ cursor: "pointer", paddingLeft: " 5px " }}
               htmlFor="checkbox">Recuerdame</label>
