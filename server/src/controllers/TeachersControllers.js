@@ -1,13 +1,7 @@
 import { hahedPassword } from "../utils/hasPassword.js";
 
 import { Teachers } from "../models/index.js";
-export async function newTeachers(
-  name,
-  lastName,
-  email,
-  password,
-  phone
-) {
+export async function newTeachers(name, lastName, email, password, phone) {
   const userTeacher = await Teachers.findOne({ where: { email } });
   if (userTeacher) {
     throw new Error("El profesor ya existe");
@@ -20,7 +14,6 @@ export async function newTeachers(
     email,
     password: userTeacherHashedPassword,
     phone,
-    birthd
   });
   return student;
 }
@@ -35,13 +28,13 @@ export async function newTeachers(
 }*/
 
 export async function deleteTeacher(id) {
-    const teacher = await Teachers.findOne({ where: { id } });
-    if (!teacher) {
-      throw new Error("El profesor no existe");
-    }
-    await teacher.destroy();
-    return teacher;
+  const teacher = await Teachers.findOne({ where: { id } });
+  if (!teacher) {
+    throw new Error("El profesor no existe");
   }
+  await teacher.destroy();
+  return teacher;
+}
 
 export async function getTeacher(email) {
   const userTeacher = await Teachers.findOne({ where: { email: email } });
@@ -52,15 +45,16 @@ export async function getTeacher(email) {
   return userTeacher;
 }
 
-export const getTeacherAll = async (req, res, next) => {
-    try {
-      const allTeachers = await Teachers.findAll({
-        // include: { model: Historiaclinica },
-      });
-      if (allTeachers.length === 0)
-        return res.status(404).send({ message: "No se encontraron profesor(es)" });
-      res.status(200).send(allTeachers);
-    } catch (e) {
-      next(e);
-    }
-  };
+export async function getAllTeacher() {
+  //try {
+  const allTeachers = await Teachers.findAll();
+  if (allTeachers.length === 0) {
+    throw new Error("No hay profesores, aun");
+  }
+  //return res.status(404).send({ message: "No se encontraron profesor(es)" });
+  //res.status(200).send(allTeachers);
+  //} catch (e) {
+  //next(e);
+  //}
+  return allTeachers;
+}

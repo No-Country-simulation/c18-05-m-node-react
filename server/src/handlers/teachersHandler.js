@@ -2,6 +2,7 @@ import {
     newTeachers,
     deleteTeacher,
     getTeacher,
+    getAllTeacher
   } from "../controllers/TeachersControllers.js";
   export async function newTeacherHandler(req, res) {
     try {
@@ -40,6 +41,16 @@ import {
       const { email } = req.body;
       const resultTeacher = await getTeacher(email);
       res.status(200).json({ message: "Get Teacher", resultTeacher });
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+
+  export async function getAllTeacherHandler(req, res) {
+    try {
+      //const { email } = req.body;
+      const resultTeacher = await getAllTeacher();
+      res.status(200).json({ message: "Get AllTeacher", resultTeacher });
     } catch (error) {
       res.status(400).json({ error: error.message });
     }

@@ -14,7 +14,7 @@ const Teachers = TeachersModel(sequelize);
 Students.hasOne(Historials, { foreignKey: "studentId", as: "historial" });
 Historials.belongsTo(Students, { foreignKey: "studentId", as: "student" });
 
-Students.hasOne(Teachers, { foreignKey: "teacherId", as: "teacher" });
+Students.hasOne(Teachers, { foreignKey: "id", as: "teacher" });
 Teachers.belongsTo(Students, { foreignKey: "teacherId", as: "student" });
 
 export { Students, Historials, Admin, Teachers };
