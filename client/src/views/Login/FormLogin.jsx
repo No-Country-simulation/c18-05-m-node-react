@@ -22,30 +22,14 @@ const FormLogin = () => {
         <b>O continua con email</b>
         <hr />
       </div>
-      <form className={style2.formLogin} action="">
+      <form className={style2.formLogin} >
         <input type="email" name="" id="Email" placeholder="Email" />
         <input type="password" name="" id="password" placeholder="Contraseña" />
 
-        <section className={style2.section_checkbox_rememberme}>
-          <div className={style2.div_checkBox_recuerdame}>
-            <input type="checkbox" name="checkbox" id="checkbox" />
-            <label style={{ cursor: "pointer", paddingLeft: " 5px " }}
-              htmlFor="checkbox">Recuerdame</label>
-          </div>
-          <div className={style2.div_checkBox_recurdame}>
-            <p>Olvidaste la contaseña?</p>
-          </div>
-        </section>
+        
 
         <input onClick={(e) => e.preventDefault()} type="submit" value="Accede" />
-        <section className={style2.section_createAccount}>
-          <div className={style2.div_section_createAccount_noHaveAccount}>
-            <p>No tienes una cuenta?</p>
-          </div>
-          <div className={style2.div_section_noHaveAccount}>
-            <p>Crear una cuenta</p>
-          </div>
-        </section>
+        
       </form>
     </section>
   )
