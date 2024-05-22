@@ -1,5 +1,6 @@
 import style1 from "./login.module.css";
 import style2 from "./LoginForm.module.css";
+import SessionGoogle from "./SessionGoogle";
 import SvgComponent from "./SvgLoginGoogle";
 
 const FormLogin = () => {
@@ -15,7 +16,7 @@ const FormLogin = () => {
       </div>
 
       <div className={style2.GoogleLogin} >
-        <SvgComponent />
+        <SessionGoogle/>
       </div>
       <div className={style2.divisorLoginGoogle__email_password}>
         <hr />
