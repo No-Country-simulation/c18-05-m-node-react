@@ -5,26 +5,27 @@ import style2 from "../styles/LoginForm.module.css";
 // import SvgComponent from "./SvgLoginGoogle";
 import GoogleButton from "./GoogleButton";
 import { useForm } from "react-hook-form";
+import { Toaster, toast } from 'sonner'
 
 const FormLogin = () => {
   const { register, handleSubmit } = useForm();
-  const [generalError, setGeneralError] = useState('');
-
   const onSubmit = (data) => {
     // Verificar si hay campos vacíos
     if (!data.email || !data.password) {
-      setGeneralError('Debe completar los campos');
+      toast.error('Debe completar los campos');
       return
     }
     
     // Si no hay errores, continuar con el envío del formulario
-    setGeneralError(''); // Limpiar el mensaje de error
     console.log("Datos del formulario:", data);
   };
   
 
   return (
     <section className={style1.formContainer}>
+      <div className={style2.errorLogin}>
+        <Toaster richColors position="top-left"/>
+      </div>
       <div className={style2.formContainer_welcome}>
         <h1 className={style2.titleLogin}>EduSync</h1>
         <b className={style2.RegisterLogin}>Registrate por acá</b>
