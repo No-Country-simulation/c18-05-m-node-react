@@ -7,9 +7,11 @@ const Cards = ({informacion}) => {
         {informacion.map((info) => (
             <Card
                 key={info.id}
-                titulo={info.titulo}
-                detalle={info.detalle}
-                fecha={info.fecha} 
+                evento={info.evento}
+                descripcion={info.descripcion}
+                hora={info.hora}
+                fecha={info.fecha}
+                verMas={info.verMas}
             />
         ))}
     </div>
