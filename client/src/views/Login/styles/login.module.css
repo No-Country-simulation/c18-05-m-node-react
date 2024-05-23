@@ -30,6 +30,23 @@
     max-width: calc(50% - 1rem); /* Ajusta el ancho máximo para que no se estire más del 50% del contenedor principal */
   }
 
+  .btnGoogle{
+    background: #fdfffc;
+    color: #006d77;
+    padding: .5rem 1rem;
+    border: 1px solid #006d77;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    transition: .3s;
+  }
+  .btnGoogle:hover{
+    font-weight: 600;
+  }
+
+
   @media screen and (max-width: 1000px) {
     .imgContainer {
       display: none;
