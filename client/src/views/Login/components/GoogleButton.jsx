@@ -5,6 +5,8 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
+import style1 from "../styles/login.module.css";
+import { FcGoogle } from "react-icons/fc";
 import { auth } from "../utils/Credentials";
 
 const GoogleButton = () => {
@@ -31,10 +33,13 @@ const GoogleButton = () => {
 
   return (
     <>
-      <button size="sm" type="submit" onClick={handleClick}>
+      <button size="sm" type="submit" onClick={handleClick}
+       className={style1.btnGoogle}
+      >
+        <FcGoogle />
         Accede con Google
+
       </button>
-      <button onClick={logout}>Logout</button>;
     </>
   );
 };

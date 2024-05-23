@@ -94,23 +94,9 @@ form{
   }
 }
 .GoogleLogin {
-  cursor: pointer;
-  border: var(--border-buttons-and-inputs);
-  width: var(--max-width);
-  max-width: 9rem;
-  height: 2.2rem;
-  border-radius: var(--border-radius);
-  display: flex;
-  & b {
-    margin: 5px 0;
-  }
-  & svg {
-    width: 50%;
-    position: relative;
-    top: 3px;
-    display: flex;
-    justify-content: center;
-  }
+ width: 100%;
+ display: flex;
+ justify-content: center;
 }
 
 .divisorLoginGoogle__email_password {
