@@ -8,9 +8,10 @@ import {
   getAllStudentsHandler,
   ChangePasswordHandler,
 } from "../handlers/studentHandlers.js";
+import { validateStudents } from "../middlewares/validateStudents.js";
 const studentsRouter = Router();
 
-studentsRouter.post("/", newStudentHandler);
+studentsRouter.post("/", validateStudents, newStudentHandler);
 studentsRouter.get("/search/:id", verifyToken, getStudentHandler);
 studentsRouter.get("/searchAll/", getAllStudentsHandler);
 studentsRouter.put("/change/", ChangePasswordHandler);
