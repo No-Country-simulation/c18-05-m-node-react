@@ -3,7 +3,7 @@ import style from "./Cards.module.css";
 
 const Cards = ({informacion}) => {
   return (
-    <div className={style.cardsContainer}>
+    <div >
         {informacion.map((info) => (
             <Card
                 key={info.id}
