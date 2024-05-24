@@ -1,0 +1,25 @@
+.cardMensajeContainer {
+    background-color: #FFFFFF;
+    width: 100%; 
+    padding: 1em;
+    border-radius: 10px;
+    border: solid 1px #E0E4E8;
+    margin-bottom: 10px;
+    position: relative; 
+}
+
+.perfil {
+    font-size: 50px;
+    margin-right: auto;
+    position: absolute; 
+    left: 0; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    font-size: 50px; 
+    margin-right: 5px; 
+}
+
+
+.contenido {
+    margin-left: 60px; 
+}

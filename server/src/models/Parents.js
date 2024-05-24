@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 
-export default function Students(sequelize) {
-  const Students = sequelize.define("Students", {
-    studentId: {
+export default function Parents(sequelize) {
+  const Parents = sequelize.define("Parents", {
+    id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
@@ -27,18 +27,11 @@ export default function Students(sequelize) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    address: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     phone: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    birthd: {
-      type: DataTypes.DATEONLY,
-    },
-    registration: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    grade: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -52,11 +45,11 @@ export default function Students(sequelize) {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
-    rol: {
+    role: {
       type: DataTypes.STRING,
-      defaultValue: "student",
+      defaultValue: "parent",
     },
   });
 
-  return Students;
+  return Parents;
 }
