@@ -1,8 +1,11 @@
-import React from 'react'
+
+import User from './User';
 
 const HomePadre = () => {
   return (
-    <div>HomePadre</div>
+    <div>HomePadre
+      <User />
+    </div>
   )
 }
 

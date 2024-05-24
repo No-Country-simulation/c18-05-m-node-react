@@ -1,6 +1,7 @@
 import { hahedPassword } from "../utils/hasPassword.js";
 
-import { Students } from "../models/index.js";
+import { Students, Subject , Historials, Promedio, Notas } from "../models/index.js";
+// import Subject from "../models/Subject.js";
 export async function newStudents(
   name,
   lastName,
@@ -40,7 +41,10 @@ export async function deleteStudent(id) {
 }
 
 export async function getStudent(id) {
-  const user = await Students.findOne({ where: { id: id } });
+  const user = await Students.findOne({ where: { id: id } })
+    // include: { model: Historials, model: Promedio, model: Notas  } }
+    
+
   if (!user) {
     throw new Error("El usuario no existe");
   }
@@ -49,9 +53,10 @@ export async function getStudent(id) {
 }
 
 export async function getAllStudents() {
-  const students = await Students.findAll();
+  const students = await Students.findAll({include:{ model: Subject, include:[{ model: Historials },{ model: Promedio}, {model: Notas }] }});
   if (!students) {
     throw new Error("No se encontraron usuarios");
   }
   return students;
 }
+// {[include:{ model: Historials },{ model: Promedio}, {model: Notas }]}
