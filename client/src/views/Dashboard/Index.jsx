@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import style from './styles/dashboard.module.css'
 import Sidebar from './components/Sidebar';
+import Usuario from './components/User';
 
 const Index = () => {
     const [isLeftSidebarVisible, setLeftSidebarVisible] = useState(true);
@@ -47,6 +48,7 @@ const Index = () => {
           <div className={style.content}>
             <h1>Contenido</h1>
             {/* Aquí va el contenido principal */}
+            <Usuario/>
           </div>
         </main>
         <Sidebar
