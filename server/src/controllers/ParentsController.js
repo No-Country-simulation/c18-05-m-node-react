@@ -48,7 +48,7 @@ export async function getParent(id) {
   return parent;
 }
 
-export async function getAllParents() {
+export async function getAllParent() {
   const parent = await Parents.findAll(/*{include:{ model: Subject, include:[{ model: Historials },{ model: Promedio}, {model: Notas }] }}*/);
   if (!parent) {
     throw new Error("No se encontraron padres");
@@ -56,3 +56,14 @@ export async function getAllParents() {
   return parent;
 }
 // {[include:{ model: Historials },{ model: Promedio}, {model: Notas }]}
+export async function updateParent(id, updateData) {
+  const parent = await Parents.findOne({ where: { id } });
+
+  if (!parent) {
+    throw new Error("El profesor no existe");
+  }
+  
+  await parent.update(updateData);
+
+  return parent;
+}
