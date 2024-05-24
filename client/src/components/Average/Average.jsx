@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './style.module.css'
-import { Chart } from 'primereact/chart';
+// import { Chart } from 'primereact/chart';
         
 export const Average = () => {
 
