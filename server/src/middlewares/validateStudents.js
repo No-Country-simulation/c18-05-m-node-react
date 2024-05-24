@@ -36,24 +36,24 @@ export function validateStudents(req, res, next) {
       message: "el email no es válido",
     });
   }
-  if (!regexPassword.test(password)) {
-    return res.status(400).json({
-      message:
-        "la contraseña debe tener al menos una letra minúscula, una mayúscula, un dígito y un carácter especial(@$!%*?&)",
-    });
-  }
+  // if (!regexPassword.test(password)) {
+  //   return res.status(400).json({
+  //     message:
+  //       "la contraseña debe tener al menos una letra minúscula, una mayúscula, un dígito y un carácter especial(@$!%*?&)",
+  //   });
+  // }
   if (!regexBirthday.test(birthd)) {
     return res.status(400).json({
       message: "la fecha de nacimiento no es válida debe ser AAAA-MM-DD",
     });
   }
-  const country = identifyCountry(phone);
-  console.log(`pais identficado${country}`);
-  if (country === "Desconocido") {
-    return res.status(400).json({
-      message: "El número de teléfono no es válido para los países soportados",
-    });
-  }
+  // const country = identifyCountry(phone);
+  // console.log(`pais identficado${country}`);
+  // // if (country === "Desconocido") {
+  // //   return res.status(400).json({
+  // //     message: "El número de teléfono no es válido para los países soportados",
+  // //   });
+  // // }
 
   next();
 }

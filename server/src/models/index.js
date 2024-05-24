@@ -4,17 +4,50 @@ import HistorialsModel from "./Historials.js";
 import { sequelize } from "../../db.js";
 import AdminModel from './Admin.js'
 import TeachersModel from './Teachers.js'
+import NotasModel from './Notas.js'
+import AverageModel from './average.js'
+import SubjectModel from './Subject.js'
+
 
 const Admin = AdminModel(sequelize);
 const Students = StudentsModel(sequelize);
 const Historials = HistorialsModel(sequelize);
 const Teachers = TeachersModel(sequelize);
+const Notas = NotasModel(sequelize);
+const Promedio = AverageModel(sequelize);
+const Subject = SubjectModel(sequelize);
+
 
 // Definir relaciones aquí
-Students.hasOne(Historials, { foreignKey: "studentId", as: "historial" });
-Historials.belongsTo(Students, { foreignKey: "studentId", as: "student" });
+// Students.hasMany(Historials, { foreignKey: "studentId" });
+// Historials.belongsTo(Students, { foreignKey: "studentId" });
 
-Students.hasOne(Teachers, { foreignKey: "id", as: "teacher" });
-Teachers.belongsTo(Students, { foreignKey: "teacherId", as: "student" });
+Students.hasMany(Teachers, { foreignKey: "id"});
+Teachers.belongsTo(Students, { foreignKey: "teacherId"});
 
-export { Students, Historials, Admin, Teachers };
+// Students.hasMany(Notas, { foreignKey: "studentId"});
+// Notas.hasOne(Students, { foreignKey: "studentId"});
+
+// Students.hasMany(Promedio, { foreignKey: "studentId" });
+// Promedio.hasOne(Students, { foreignKey: "studentId" });
+
+Promedio.hasMany(Notas, { foreignKey: "promedioId"});
+Notas.hasOne(Promedio, { foreignKey: "promedioId" });
+
+Subject.hasMany(Historials, { foreignKey: "idSubject" });
+Historials.belongsTo(Subject, { foreignKey: "idSubject" });
+
+Subject.hasMany(Notas, { foreignKey: "idSubject" });
+Notas.hasOne(Subject, { foreignKey: "idSubject" });
+
+Subject.hasOne(Promedio, { foreignKey: "idSubject" });
+Promedio.hasOne(Subject, { foreignKey: "idSubject" });
+
+Students.hasMany(Subject, { foreignKey: "studentId" });
+Subject.hasMany(Students, { foreignKey: "studentId" });
+
+
+
+
+
+export { Students, Historials, Admin, Teachers, Notas, Promedio, Subject };

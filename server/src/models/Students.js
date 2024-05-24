@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 
 export default function Students(sequelize) {
   const Students = sequelize.define("Students", {
-    id: {
+    studentId: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
