@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import style from './styles/dashboard.module.css'
 import Sidebar from './components/Sidebar';
-import Usuario from './components/User';
 import Home from '../Home/Index'
 import Cards from '../../components/cards/Cards';
 import { Outlet } from "react-router-dom";
@@ -58,7 +57,6 @@ const Index = () => {
           <div className={style.content}>
             <h1>Contenido</h1>
             {/* Aquí va el contenido principal */}
-            <Usuario/>
           <Outlet/>
           </div>
         </main>
