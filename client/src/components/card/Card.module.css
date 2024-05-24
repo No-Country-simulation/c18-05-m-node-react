@@ -9,7 +9,7 @@
 
 .Card {
   border: solid 1px;
-  border-color: var(--color-gris) ;
+  border-color: #dee2e6 ;
   color: #000;
   width: fit-content;
   padding: 1em;

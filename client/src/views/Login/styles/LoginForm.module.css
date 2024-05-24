@@ -14,15 +14,12 @@
 .formContainer_welcome {
   width: 100%;
   display: flex;
+  height: auto;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
-.formContainer_welcome > * {
-  display: flex;
-  /* justify-content: center; */
-  text-align: start;
-}
+
 
 .titleLogin {
   color: #065ad8;
@@ -47,6 +44,7 @@ form{
   & :is(input[type="email"], input[type="password"], input[type="submit"]) {
     max-width: var(--max-widthForm);
     width: 100%;
+    height: 100%;
     border: var(--border-buttons-and-inputs);
     border-radius: var(--border-radius);
     padding: 10px;
@@ -83,8 +81,12 @@ form{
 }
 .section_checkbox_rememberme {
   display: flex;
+
   justify-content: space-between;
   max-width: var(--max-widthForm);
+
+  max-width: var(--max-width);
+
   width: 100%;
   & label:hover {
     color: var(--background-color-buttons);

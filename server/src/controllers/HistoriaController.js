@@ -29,7 +29,7 @@ export const traerHistoria = async (req, res, next) => {
       if (!historias)
         return res
           .status(404)
-          .send({ message: "No se encontró ninguna historia clínica" });
+          .send({ message: "No se encontró ningun historial" });
       res.status(200).send(historias);
     } catch (e) {
       next(e);
@@ -45,9 +45,9 @@ export const traerHistoriaPorID = async (req, res, next) => {
       if (!HistoriaPorID)
         return res
           .status(404)
-          .send({ message: "La historia clinica por id no ha sido encontrada." });
+          .send({ message: "La historia  por id no ha sido encontrada." });
       res.status(200).send({
-        message: "La historia clinica ha sido encontrada",
+        message: "La historia  ha sido encontrada",
         Historials: HistoriaPorID,
       });
     } catch (e) {

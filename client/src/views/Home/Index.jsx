@@ -1,9 +1,11 @@
-import { Outlet } from "react-router-dom";
-import Navbar from "../../components/Navbar/Navbar";
-import Cards from "../../components/cards/Cards";
-import axios from 'axios'
+import { useEffect, useState } from "react";
+import HomeProfesor from "./components/HomeProfesor";
+import HomePadre from "./components/HomePadre";
+import HomeEstudiante from "./components/HomeEstudiantes";
+import { userHistory } from "../../Api/history";
 
 const Index = () => {
+
 
   const datos = [
     { id: 1, evento: 'Feria del Libro', descripcion: 'Detalle 1', fecha: "2024/05/23", hora: "9:30 - 12:30", verMas:"vfdvdf"  },
@@ -30,6 +32,30 @@ const Index = () => {
       
       <Cards informacion={datos}/>
     </main>
+
+  const [roluser, setRoluser] = useState("estudiante");
+
+  useEffect(() => {
+    const dataHitorial = async () => {
+      try {
+        const response = await userHistory();
+        console.log(response);
+        // Aquí puedes hacer algo con la respuesta, como actualizar el estado del componente
+      } catch (error) {
+        console.error("Error fetching user history:", error);
+      }
+    };
+
+    dataHitorial();
+  }, []);
+
+  return (
+    <>
+      {roluser === "profesor" && <HomeProfesor />}
+      {roluser === "padre" && <HomePadre />}
+      {roluser === "estudiante" && <HomeEstudiante />}
+    </>
+
   );
 };
 
