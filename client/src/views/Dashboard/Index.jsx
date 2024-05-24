@@ -2,11 +2,21 @@ import { useEffect, useState } from 'react';
 import style from './styles/dashboard.module.css'
 import Sidebar from './components/Sidebar';
 import Usuario from './components/User';
+import Home from '../Home/Index'
+import Cards from '../../components/cards/Cards';
+import { Outlet } from "react-router-dom";
 
 const Index = () => {
     const [isLeftSidebarVisible, setLeftSidebarVisible] = useState(true);
     const [isRightSidebarVisible, setRightSidebarVisible] = useState(true);
     const [isMobileView, setIsMobileView] = useState(false);
+
+    const datosEvent = [
+        { id: 1, evento: 'Feria del Libro', descripcion: 'Detalle 1', fecha: "2024/05/23", hora: "9:30 - 12:30", verMas:"vfdvdf"  },
+        // { id: 2, evento: 'dia de la infependendia', detalle: 'Detalle 1', fecha: '2024/05/25' },
+        // { id: 3, evento: 'dia de la bandera', detalle: 'Detalle 1', fecha: '2024/05/26' },
+        // conectar con back y poner los datos verdaderos
+      ];
   
     const toggleLeftSidebar = () => {
       setLeftSidebarVisible(!isLeftSidebarVisible);
@@ -49,6 +59,7 @@ const Index = () => {
             <h1>Contenido</h1>
             {/* Aquí va el contenido principal */}
             <Usuario/>
+          <Outlet/>
           </div>
         </main>
         <Sidebar
