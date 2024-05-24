@@ -5,7 +5,7 @@ import HomeEstudiante from "./components/HomeEstudiantes";
 import { userHistory } from "../../Api/history";
 
 const Index = () => {
-  const [roluser, setRoluser] = useState("padre");
+  const [roluser, setRoluser] = useState("estudiante");
 
   useEffect(() => {
     const dataHitorial = async () => {

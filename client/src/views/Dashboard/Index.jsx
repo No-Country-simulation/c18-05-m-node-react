@@ -1,44 +1,53 @@
 import { useEffect, useState } from 'react';
-import style from './styles/dashboard.module.css'
+import { Outlet } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../Hooks/useAppSelector';
+import style from './styles/dashboard.module.css';
 import Sidebar from './components/Sidebar';
-import Home from '../Home/Index'
-import Cards from '../../components/cards/Cards';
-import { Outlet } from "react-router-dom";
+import Login from '../Login/Index'
+import { logout } from '../../store/slicer/auth.slice';
 
 const Index = () => {
-    const [isLeftSidebarVisible, setLeftSidebarVisible] = useState(true);
-    const [isRightSidebarVisible, setRightSidebarVisible] = useState(true);
-    const [isMobileView, setIsMobileView] = useState(false);
+  const [isLeftSidebarVisible, setLeftSidebarVisible] = useState(true);
+  const [isRightSidebarVisible, setRightSidebarVisible] = useState(true);
+  const [isMobileView, setIsMobileView] = useState(false);
 
-    const datosEvent = [
-        { id: 1, evento: 'Feria del Libro', descripcion: 'Detalle 1', fecha: "2024/05/23", hora: "9:30 - 12:30", verMas:"vfdvdf"  },
-        // { id: 2, evento: 'dia de la infependendia', detalle: 'Detalle 1', fecha: '2024/05/25' },
-        // { id: 3, evento: 'dia de la bandera', detalle: 'Detalle 1', fecha: '2024/05/26' },
-        // conectar con back y poner los datos verdaderos
-      ];
+  const isAuth = useAppSelector((state) => state.auth.isAuth);
+  console.log(isAuth)  
+
+  const Dispatch = useAppDispatch();
+
+
   
-    const toggleLeftSidebar = () => {
-      setLeftSidebarVisible(!isLeftSidebarVisible);
+  const handleLogout = ()=>{
+    Dispatch(logout())
+  }
+
+  const toggleLeftSidebar = () => {
+    setLeftSidebarVisible(!isLeftSidebarVisible);
+  };
+
+  const toggleRightSidebar = () => {
+    setRightSidebarVisible(!isRightSidebarVisible);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 768);
     };
-  
-    const toggleRightSidebar = () => {
-      setRightSidebarVisible(!isRightSidebarVisible);
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Llamamos a la función para establecer el estado inicial
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
     };
-  
-    useEffect(() => {
-      const handleResize = () => {
-        setIsMobileView(window.innerWidth <= 768);
-      };
-  
-      window.addEventListener('resize', handleResize);
-      handleResize(); // Llamamos a la función para establecer el estado inicial
-  
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
-  
-    return (
+  }, []);
+
+ 
+
+  return (
+    <>
+   {isAuth ? (
       <div className={style.container}>
         <Sidebar
           position="left"
@@ -55,8 +64,10 @@ const Index = () => {
             ☰
           </button>
           <div className={style.content}>
-          <Outlet/>
-           
+            <button
+            onClick={handleLogout}
+            >desconectarse</button>
+            <Outlet />
           </div>
         </main>
         <Sidebar
@@ -65,8 +76,12 @@ const Index = () => {
           toggleSidebar={toggleRightSidebar}
         />
       </div>
-    );
-  };
+    ) : (
+      <Login />
+    )}
+    </>
+   
+  );
+};
 
-
-export default Index
+export default Index;
