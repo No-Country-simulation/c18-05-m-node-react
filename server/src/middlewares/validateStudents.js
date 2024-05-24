@@ -1,9 +1,6 @@
-import {
-  regexBirthday,
-  regexEmail,
-  regexPassword,
-  identifyCountry,
-} from "../helpers/regexStudents.js";
+import { regexEmail, regexPassword } from "../helpers/regexForm.js";
+import { regexBirthday } from "../helpers/regexStudents.js";
+import { identifyCountry } from "../helpers/regexCountryPhone.js";
 
 export function validateStudents(req, res, next) {
   const {
