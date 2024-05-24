@@ -1,6 +1,6 @@
 import { ExtractJwt, Strategy as JwtStrategy } from "passport-jwt";
 import passport from "passport";
-import { Students, Admin, Teachers } from "../models/index.js";
+import { Students, Admin, Teachers, Parents } from "../models/index.js";
 import { JWT_TOKEN_SECRET } from "../config/envs.js";
 
 const jwtOptions = {
@@ -15,6 +15,8 @@ const findUserByIdAndRole = async (userId, role) => {
     return await Admin.findByPk(userId);
   } else if (role === "teacher") {
     return await Teachers.findByPk(userId);
+  } else if (role === "parent") {
+    return await Parents.findByPk(userId);
   }
   return null;
 };
