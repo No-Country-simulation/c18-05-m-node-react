@@ -55,8 +55,9 @@ const Index = () => {
             ☰
           </button>
           <div className={style.content}>
+            <h1>Contenido</h1>
+            {/* Aquí va el contenido principal */}
           <Outlet/>
-           
           </div>
         </main>
         <Sidebar
