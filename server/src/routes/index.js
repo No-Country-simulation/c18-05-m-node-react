@@ -8,7 +8,7 @@ import historyRouter from "./HistoriaRoutes.js";
 import loginRouter from "./loginRouter.js";
 import NotasRoute from "./notasRoute.js";
 import MateriaRoute from "./subjectRoutes.js";
-import ParentRoute from "./parentRouter.js";
+import ParentsRoute from "./parentsRouter.js";
 const router = Router();
 
 router.put("/delete/:email", debajaOdealta);
@@ -20,5 +20,5 @@ router.use("/teachers", teachersRouter);
 router.use("/login", loginRouter);
 router.use("/notas", NotasRoute);
 router.use("/subject", MateriaRoute);
-router.use("/parent", ParentRoute);
+router.use("/parent", ParentsRoute);
 export default router;
