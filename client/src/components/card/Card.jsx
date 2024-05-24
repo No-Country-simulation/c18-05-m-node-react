@@ -21,11 +21,9 @@ const Card = ({ evento, hora, verMas, descripcion, fecha }) => {
           <h2>{evento}</h2>
         </div>
         <div>
-
           <h2 className={style.Description}>Descripcion: {descripcion}</h2>
         </div>
         <div >
-
         </div>
         <div className={style.WatchMore}>
           {/* para redirigir a otra seccion se va a usar useNavigate acá */}

@@ -12,9 +12,6 @@ const Index = () => {
     // conectar con back y poner los datos verdaderos
   ];
 
-
-
-
   // const instance = axios.create({
   //   baseURL: 'http://localhost:3001/students/searchAll',
     
@@ -30,6 +27,7 @@ const Index = () => {
       <Navbar />
       <Outlet />
       <p>Index Home</p>
+      
       <Cards informacion={datos}/>
     </main>
   );

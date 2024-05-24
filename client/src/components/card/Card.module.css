@@ -4,6 +4,7 @@
   --color-gris-letter: #7f7d7d;
   --max-width:30px;
     --padding: 5px;
+    --font-size:13px;
 }
 
 .Card {
@@ -50,7 +51,7 @@
     border-radius: var(--border-radius);
 }
 .Description{
-    font-size: 13px;
+    font-size: var(--font-size);
     font-weight: 600;
     color: var(--color-gris-letter);
 }
@@ -64,6 +65,7 @@
         color: #ffff;
         padding:5px 18px;
         border-radius: var(--border-radius);
+        font-size:var(--font-size) ;
         &:hover{
             background-color: #748aa0;
         }
