@@ -7,6 +7,7 @@ import TeachersModel from './Teachers.js'
 import NotasModel from './Notas.js'
 import AverageModel from './average.js'
 import SubjectModel from './Subject.js'
+import ParentsModel from './Parents.js'
 
 
 const Admin = AdminModel(sequelize);
@@ -16,6 +17,7 @@ const Teachers = TeachersModel(sequelize);
 const Notas = NotasModel(sequelize);
 const Promedio = AverageModel(sequelize);
 const Subject = SubjectModel(sequelize);
+const Parents = ParentsModel(sequelize);
 
 
 // Definir relaciones aquí
@@ -50,4 +52,4 @@ Subject.hasMany(Students, { foreignKey: "studentId" });
 
 
 
-export { Students, Historials, Admin, Teachers, Notas, Promedio, Subject };
+export { Students, Historials, Admin, Teachers, Notas, Promedio, Subject, Parents };
