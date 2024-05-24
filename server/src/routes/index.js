@@ -20,5 +20,3 @@ router.use("/login", loginRouter);
 router.use("/notas", NotasRoute);
 router.use("/subject", MateriaRoute);
 export default router;
-//Julio@Cesar2001
-//appwebnotificationes@gmail.com
