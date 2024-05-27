@@ -3,11 +3,7 @@ import { useState } from 'react'
 import style from './style.module.css'
 
 
-const Index = () => {
-
-
-
-
+const Users = () => {
     let initialState = "Parents"
     
     initialState = "Son"
@@ -124,4 +120,4 @@ const Index = () => {
         </>
     )
 }
-export default Index
+export default Users
