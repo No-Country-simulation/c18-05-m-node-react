@@ -8,7 +8,7 @@ export const Average = () => {
         <>
            
 
-           <Chart type="bar" data={chartData} options={chartOptions} />
+           {/* <Chart type="bar" data={chartData} options={chartOptions} /> */}
         </>
     )
 }
