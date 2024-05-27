@@ -1,6 +1,15 @@
 :root {
-  /* --border-radius: 1.5rem; */
   --width: 100%;
+}
+button{
+  align-self: center;
+  cursor: pointer;
+  padding: 10px;
+  border: solid 1px #787676;
+  background-color: #cac9c9;
+  &:hover{
+    background-color: #ecebeb;
+  }
 }
 .bgContainer {
   background-color: #8498b5;
@@ -9,13 +18,13 @@
   place-items: center;
 }
 
+
 .articleRole {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: space-around;
   width: 90%;
   & .containerPicture {
-    border-radius: 1.5rem 0 0 1.5rem;
     display: flex;
     justify-content: center;
     position: relative;
@@ -29,10 +38,9 @@
   .articleRole {
     grid-template-columns: 100%;
     grid-template-rows: 51% 80%;
-
     & .containerPicture {
       border-radius: none;
-      height: 53vh;
+      height: 41vh;
     }
   }
 }
@@ -48,11 +56,6 @@
   border-radius: var(--border-radius);
 }
 
-@media screen and (width < 768px) {
-  .imgRole {
-    max-width: 160px;
-  }
-}
 
 .infoUser {
   height: auto;
@@ -60,37 +63,82 @@
   background-color: #dbd7d7;
   display: flex;
   flex-direction: column;
-  border-radius: 0 1.5rem 1.5rem 0;
+  /* border-radius: 0 1.5rem 1.5rem 0; */
+}
+@media screen and (width < 768px) {
+  .imgRole {
+    max-width: 160px;
+  }
+  .infoUser{
+    height: 39vh;
+  }
+  .ContainerUserInfo {
+    height: 8vh;
+  }
 }
 .ContainerUserInfo {
   border-radius: var(--border-radius);
   padding: 1rem;
   height: 40vh;
+  
 }
-@media screen and (width < 768px) {
-  .ContainerUserInfo {
-    height: 8vh;
-  }
+.ContainerUserInfo >*{
+  margin: 1rem;
+
 }
+
 .nameLastName {
   display: flex;
   justify-content: center;
-  gap: 1rem;
   & p {
     background-color: #888181;
   }
 }
-.redireccionHijo {
+.redireccionDeUsuario {
   display: flex;
+  justify-content: space-between;
+  height: fit-content;
   gap: 1rem;
+  border: solid 1px #5e5757;
   & button {
     border-radius: var(--border-radius);
-    padding: 5px;
     cursor: pointer;
     border: solid 2px #b7b7b7;
     padding: 5px;
+    height: 40px;
+    min-width: 6rem;
     &:hover {
       background-color: #a8a8a8;
     }
+  }
+}
+
+.infoNameAnotherUser {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 1rem;
+  & p{
+    width: fit-content;
+    display: flex;
+    justify-content: start;
+    align-self: center;
+  }
+  
+}
+@media screen and (width < 409px){
+  .infoNameAnotherUser{
+    display: flex;
+    flex-direction: column;
+    & p{
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+   }
+  }
+  .redireccionDeUsuario{
+    display: flex;
+    flex-direction: column;
   }
 }
