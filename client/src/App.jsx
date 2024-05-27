@@ -1,16 +1,19 @@
 import { Routes, Route } from 'react-router-dom'
 import Dashboard from './views/Dashboard/Index'
 import Login from './views/Login/Index'
-import Home from './views/Home/Index'
+import AuthOutlet from '@auth-kit/react-router/AuthOutlet';
+import Home from './views/Login/Index'
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} >
-        <Route path="/login" element={<Login />} />
-       <Route path="/home" element={<Home />} />
+    <Route path="/login" element={<Login />} />
+    <Route element={<AuthOutlet fallbackPath='/login' />}>
+      <Route path="/" element={<Dashboard />}>
+        <Route path="/home" element={<Home />} />
       </Route>
-    </Routes>
+    </Route>
+  </Routes>
   );
 };
 

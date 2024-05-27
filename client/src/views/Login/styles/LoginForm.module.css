@@ -38,10 +38,12 @@ form{
   align-items: center;
   width: 100%;
   gap: 1rem;
+  padding: 0 7rem;
 }
+
 .formLogin {
   & :is(input[type="email"], input[type="password"], input[type="submit"]) {
-    max-width: var(--max-width);
+    
     width: 100%;
     height: 100%;
     border: var(--border-buttons-and-inputs);
@@ -71,6 +73,7 @@ form{
     }
   }
 }
+
 
 .div_checkBox_recuerdame {
   display: flex;
