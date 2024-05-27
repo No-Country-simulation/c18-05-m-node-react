@@ -3,10 +3,10 @@ import { useState } from 'react'
 import style from './style.module.css'
 
 
-const Users = () => {
+const Index = () => {
     let initialState = "Parents"
     
-    initialState = "Son"
+    // initialState = "Son"
     initialState = "Parents"
 
     const [role, setRole] = useState(initialState)
@@ -77,7 +77,7 @@ const Users = () => {
                                                 <p >{infoUser.hijos.map((hijo) => (hijo.lastName))}</p>
                                             </div>
 
-                                            <button >
+                                            <button onClick={() => setRole("Son")}>
                                                 Perfil del hijo
                                             </button>
                                         </div>
@@ -106,7 +106,7 @@ const Users = () => {
                                             <div className={style.infoNameAnotherUser}>
                                                 <p>{infoSon.parents.map((padre) => (padre.name))}</p>
                                             </div>
-                                            <button >
+                                            <button  onClick={() => setRole("Parents")}>
                                                 Perfil del padre
                                             </button>
                                         </div>
@@ -120,4 +120,4 @@ const Users = () => {
         </>
     )
 }
-export default Users
+export default Index
