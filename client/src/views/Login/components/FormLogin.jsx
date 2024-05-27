@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import style1 from "../styles/login.module.css";
 import style2 from "../styles/LoginForm.module.css";
 // import SessionGoogle from "./SessionGoogle";
@@ -6,9 +6,13 @@ import style2 from "../styles/LoginForm.module.css";
 import GoogleButton from "./GoogleButton";
 import { useForm } from "react-hook-form";
 import { Toaster, toast } from 'sonner'
+import { useAppDispatch } from "../../../Hooks/useAppSelector";
+import { login } from "../../../store/slicer/auth.slice";
 
 const FormLogin = () => {
   const { register, handleSubmit } = useForm();
+
+  const dispatch= useAppDispatch()
   const onSubmit = (data) => {
     // Verificar si hay campos vacíos
     if (!data.email || !data.password) {
@@ -18,6 +22,7 @@ const FormLogin = () => {
     
     // Si no hay errores, continuar con el envío del formulario
     console.log("Datos del formulario:", data);
+    dispatch(login())
   };
   
 
