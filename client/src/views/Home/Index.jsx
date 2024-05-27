@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Cards from "../../components/cards/Cards";
+import Padres from "../Parents/Index";
 import axios from 'axios'
 
 const Index = () => {
@@ -24,11 +25,11 @@ const Index = () => {
 
   return (
     <main>
-      <Navbar />
+      {/* <Navbar /> */}
       <Outlet />
-      <p>Index Home</p>
-      
-      <Cards informacion={datos}/>
+      {/* <p>Index Home</p> */}
+      <Padres />
+      {/* <Cards informacion={datos}/> */}
     </main>
   );
 };
