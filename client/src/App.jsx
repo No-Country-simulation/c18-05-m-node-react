@@ -1,16 +1,20 @@
 import { Routes, Route } from 'react-router-dom'
 import Dashboard from './views/Dashboard/Index'
 import Login from './views/Login/Index'
-import Home from './views/Home/Index'
+import Home from './views/Home/components/Home'
+import Navbar from './components/Navbar/Navbar'
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Dashboard />} >
+    <>
+     <Navbar />
+      <Routes>
+        <Route path="/" element={<Dashboard />} >
+        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
-       <Route path="/home" element={<Home />} />
       </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 };
 

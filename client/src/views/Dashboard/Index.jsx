@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import style from './styles/dashboard.module.css'
 import Sidebar from './components/Sidebar';
-import Home from '../Home/Index'
+//import Home from '../Home/Index'
 //import CardsMensajes from './components/cardsmensaje/CardsMensajes';
 import { Outlet } from "react-router-dom";
 

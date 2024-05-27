@@ -1,0 +1,59 @@
+
+.container {
+    background-color: #FFFFFF;
+    overflow: hidden;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 15px 25px;
+    border-bottom: 2px solid #DEE2E6;
+    /* position: fixed; /* Fija la posición del navbar CUANDO LO PONGO YA SE PIERDE LOS MENUS LATERALES*
+    width: 100%; /* Ajusta el ancho al 100% de la ventana *
+    top: 0; /* Coloca el navbar en la parte superior *
+    z-index: 1000; Asegura que el navbar esté por encima de otros elementos */
+}
+
+
+.container ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+
+.container li a {
+    display: block;
+    color: rgb(82, 81, 81);
+    font-size: 15px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+.container li a:hover {
+    color: #0ca3fa;
+    border-bottom: 2px solid rgb(82, 81, 81);
+}
+
+
+.container button {
+    background-color: #176fe2;
+    color: white;
+    font-size: 15px;
+    padding: 15px 25px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+
+.container button:hover {
+    background-color: #0ca3fa;
+}
+
+
+.button-container {
+    position: absolute;
+    right: 20px; 
+}

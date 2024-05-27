@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; /* Centra verticalmente los elementos */
+    height: 100vh;
+    padding: 20px; /* Agrega espacio a los lados */
+    margin-top: -10%;
+}
+
+
+.texto {
+    flex: 1; /* Permite que el texto ocupe el espacio restante */
+    text-align: left;
+}
+
+
+.imgLibros {
+    border-radius: 50%;
+    width: 600px;
+    height: 600px;
+}
+
+
+p {
+    margin-top: 30px;
+}
+
+
+.negro, .azul {
+    font-size: 25px;
+}
+
+
+.negro {
+    color: black;
+}
+
+
+.azul {
+    color: blue;
+}  
+
+
+
