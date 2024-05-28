@@ -1,35 +1,77 @@
 
 import style1 from "../styles/login.module.css";
 import style2 from "../styles/LoginForm.module.css";
-// import SessionGoogle from "./SessionGoogle";
-// import SvgComponent from "./SvgLoginGoogle";
 import GoogleButton from "./GoogleButton";
 import { useForm } from "react-hook-form";
 import { Toaster, toast } from 'sonner'
-import { useAppDispatch } from "../../../Hooks/useAppSelector";
+// import { useAppDispatch } from "../../../Hooks/useAppSelector";
 import { login } from "../../../store/slicer/auth.slice";
+import { userLogin } from "../../../Api/useLogin";
+import useSignIn from "react-auth-kit/hooks/useSignIn";
+import { useNavigate } from "react-router-dom";
 
 const FormLogin = () => {
-  const { register, handleSubmit } = useForm();
 
-  const dispatch= useAppDispatch()
-  const onSubmit = (data) => {
+  const { register, handleSubmit } = useForm();
+  
+  const signIn = useSignIn();
+  const navigate= useNavigate()
+
+
+/*
+"email":"jorge@gmail.com",
+    "password":"Acaprueba",
+"email":"Josepa@gmail.com",
+    "password":"Un.esfuerz0",
+*/ 
+
+  // const dispatch= useAppDispatch()
+  const onSubmit = async (data) => {
     // Verificar si hay campos vacíos
     if (!data.email || !data.password) {
       toast.error('Debe completar los campos');
       return
     }
-    
+
+    try {
+      const res = await userLogin(data)
+
+      const {userStudent, token } = res.resultLogin
+      // Intentar iniciar sesión usando el hook signIn
+      if (signIn({
+        auth: {
+            token: token, // El token devuelto por el backend
+            type: 'Bearer' // Tipo de token, podría variar según tu backend
+        },
+        userState: {
+            email: userStudent // Estado del usuario, en este caso el email
+        }
+    })) {
+        // Si el inicio de sesión es exitoso, puedes redirigir o realizar alguna acción
+        toast.success('Inicio de sesión exitoso');
+        navigate('/')
+    } else {
+        // Si falla el inicio de sesión, muestra un mensaje de error
+        toast.error('Error al iniciar sesión');
+    }
+      console.log(res)
+
+    } catch (error) {
+      console.log(error)
+    }
+
     // Si no hay errores, continuar con el envío del formulario
-    console.log("Datos del formulario:", data);
-    dispatch(login())
+    // console.log("Datos del formulario:", data);
+    // dispatch(login())
   };
-  
+
+
+
 
   return (
     <section className={style1.formContainer}>
       <div className={style2.errorLogin}>
-        <Toaster richColors position="top-left"/>
+        <Toaster richColors position="top-left" />
       </div>
       <div className={style2.formContainer_welcome}>
         <h1 className={style2.titleLogin}>EduSync</h1>
@@ -45,8 +87,8 @@ const FormLogin = () => {
         <b>O continua con email</b>
         <hr />
       </div>
-    
-      
+
+
       <form className={style2.formLogin} onSubmit={handleSubmit(onSubmit)}>
         <input
           type="email"

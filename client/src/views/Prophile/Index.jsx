@@ -1,14 +1,19 @@
 
 import { useState } from 'react'
 import style from './style.module.css'
+import { Parents } from './Parents'
+import Sons from './Sons'
 
 
 const Index = () => {
     let initialState = "Parents"
-    
-    // initialState = "Son"
+
+    initialState = "Son"
     initialState = "Parents"
 
+    const Prevent = (e) => {
+        e.preventDefault()
+    }
     const [role, setRole] = useState(initialState)
 
     const infoUser = {
@@ -21,12 +26,14 @@ const Index = () => {
         address: 'Calle falsa 123',
         hijos: [
             {
+                id: 1,
                 name: 'Bruno',
                 lastName: 'Perez',
                 email: 'aFtXa@example.com',
                 phone: '123456789',
             },
             {
+                id: 2,
                 name: 'Pedro',
                 lastName: 'Santoro',
                 email: 'fgdsgsd@example.com',
@@ -42,12 +49,12 @@ const Index = () => {
         phone: '123456789',
         parents: [
             {
+                id: 1,
                 name: 'Ernesto',
                 lastName: 'Pereira',
                 email: 'aFtXa@example.com',
                 phone: '123456789',
             },
-
         ]
     }
 
@@ -66,20 +73,37 @@ const Index = () => {
                             </div>
                             <section className={style.infoUser}>
                                 <div className={style.ContainerUserInfo}>
-                                    <div className={style.nameLastName}>
-                                        <p>Nombre del padre: {infoUser.nameFather}</p>
-                                        <p>Apellido del padre: {infoUser.lastNameFather}</p>
+                                    <div className={style.LastName}>
+                                        <p
+                                            style={{
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                justifyContent: "space-evenly"
+                                            }}
+                                        >
+                                            Padre:
+                                            <u>
+                                                {infoUser.nameFather}-
+                                                {infoUser.lastNameFather}
+                                            </u>
+                                        </p>
+                                    </div>
+                                    <div className={style.ToContantFather}>
+                                        <b>Contacto: </b>
+                                        <p>Email: <a href='' onClick={Prevent}>{infoUser.email}</a></p>
+                                        <p>Telefono: <a href='' onClick={Prevent}>{infoUser.phone}</a></p>
+                                        <p>Direccion: <a href='' onClick={Prevent}>{infoUser.address}</a></p>
                                     </div>
                                     <div className={style.redireccionHijo}>
                                         <div>
                                             <div className={style.infoNameSons}>
-                                                <p >{infoUser.hijos.map((hijo) => (hijo.name))}</p>
-                                                <p >{infoUser.hijos.map((hijo) => (hijo.lastName))}</p>
+                                                {
+                                                    <Parents
+                                                        data={infoUser.hijos}
+                                                        setRole={setRole}
+                                                    />
+                                                }
                                             </div>
-
-                                            <button onClick={() => setRole("Son")}>
-                                                Perfil del hijo
-                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -88,35 +112,55 @@ const Index = () => {
                     </div>
                 )
             }
-            {
+            {/* {
                 initialState === "Son" && (
                     <div className={style.bgContainer}>
-                        <article className={style.articleRole}>
-                            <div className={style.containerPicture}>
-                                <img className={style.imgRole} src={imagen} alt="" />
-                            </div>
-                            <section className={style.infoUser}>
-                                <div className={style.ContainerUserInfo}>
-                                    <div className={style.nameLastName}>
-                                        <p>Nombre padre: {infoSon.name}</p>
-                                        <p>Apellido padre: {infoSon.lastName}</p>
-                                    </div>
-                                    <div className={style.redireccionDeUsuario}>
-                                        <div>
-                                            <div className={style.infoNameAnotherUser}>
-                                                <p>{infoSon.parents.map((padre) => (padre.name))}</p>
-                                            </div>
-                                            <button  onClick={() => setRole("Parents")}>
-                                                Perfil del padre
-                                            </button>
+                    <article className={style.articleRole}>
+                        <div className={style.containerPicture}>
+                            <img className={style.imgRole} src={imagen} alt="" />
+                        </div>
+                        <section className={style.infoUser}>
+                            <div className={style.ContainerUserInfo}>
+                                <div className={style.LastName}>
+                                    <p
+                                        style={{
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            justifyContent: "space-evenly"
+                                        }}
+                                    >
+                                        Padre:
+                                        <u>
+                                            {infoSon.name}-
+                                            {infoSon.lastName}
+                                        </u>
+                                    </p>
+                                </div>
+                                <div className={style.ToContantFather}>
+                                    <b>Contacto: </b>
+
+                                    <p>Email: <a href='' onClick={Prevent}>{infoSon.email}</a></p>
+                                    <p>Telefono: <a href='' onClick={Prevent}>{infoSon.phone}</a></p>
+                                    <p>Direccion: <a href='' onClick={Prevent}>{infoSon.address}</a></p>
+                                </div>
+                                <div className={style.redireccionHijo}>
+                                    <div>
+                                        <div className={style.infoNameSons}>
+                                            {
+                                                <Sons
+                                                // data={infoSon}
+                                                setRole={setRole}
+                                            />
+                                            }
                                         </div>
                                     </div>
                                 </div>
-                            </section>
-                        </article>
-                    </div>
+                            </div>
+                        </section>
+                    </article>
+                </div>
                 )
-            }
+            } */}
         </>
     )
 }

@@ -1,25 +1,29 @@
 import { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../Hooks/useAppSelector';
+import { Outlet, useNavigate } from 'react-router-dom';
+// import { useAppDispatch, useAppSelector } from '../../Hooks/useAppSelector';
 import style from './styles/dashboard.module.css';
 import Sidebar from './components/Sidebar';
 import Login from '../Login/Index'
-import { logout } from '../../store/slicer/auth.slice';
+import useSignOut from 'react-auth-kit/hooks/useSignOut';
+// import { logout } from '../../store/slicer/auth.slice';
 
 const Index = () => {
   const [isLeftSidebarVisible, setLeftSidebarVisible] = useState(true);
   const [isRightSidebarVisible, setRightSidebarVisible] = useState(true);
   const [isMobileView, setIsMobileView] = useState(false);
 
-  const isAuth = useAppSelector((state) => state.auth.isAuth);
-  console.log(isAuth)  
+  // const isAuth = useAppSelector((state) => state.auth.isAuth);
+  // console.log(isAuth)  
 
-  const Dispatch = useAppDispatch();
+  // const Dispatch = useAppDispatch();
 
-
+const Navigate = useNavigate()
   
+  const singOut = useSignOut()
   const handleLogout = ()=>{
-    Dispatch(logout())
+
+    singOut()
+    Navigate("/login")
   }
 
   const toggleLeftSidebar = () => {
@@ -47,7 +51,7 @@ const Index = () => {
 
   return (
     <>
-   {isAuth ? (
+
       <div className={style.container}>
         <Sidebar
           position="left"
@@ -64,10 +68,8 @@ const Index = () => {
             ☰
           </button>
           <div className={style.content}>
-            <button
-            onClick={handleLogout}
-            >desconectarse</button>
-            <Outlet />
+            <button onClick={handleLogout }>desconectarse</button>
+
           </div>
         </main>
         <Sidebar
@@ -76,9 +78,7 @@ const Index = () => {
           toggleSidebar={toggleRightSidebar}
         />
       </div>
-    ) : (
-      <Login />
-    )}
+    
     </>
    
   );
