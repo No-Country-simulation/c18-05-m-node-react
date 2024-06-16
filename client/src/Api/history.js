@@ -1,6 +1,14 @@
 import axios from 'axios'
 
-const API='http://localhost:3001'
+const API='https://edusync-fbva.onrender.com'
 
 
-export const userHistory= () => axios.get(`${API}/historia`)
+export const listHistoria = async () => {
+    try {
+      const response = await axios.get(`${API}/historia`);
+      return response; 
+    } catch (error) {
+      console.error("Error fetching parents:", error);
+      throw error;
+    }
+  };

@@ -13,18 +13,15 @@ export default function Historials(sequelize) {
       message: {
         type: DataTypes.TEXT,
       },
-      date: {
-        type: DataTypes.STRING,
-      },
       teacherName: {
         type: DataTypes.STRING,
       },
       course: {
         type: DataTypes.STRING,
       },
-    },
-    {
-      timestamps: false,
+      hour: {
+        type: DataTypes.DATE,
+      },
     }
   );
   return Historials;

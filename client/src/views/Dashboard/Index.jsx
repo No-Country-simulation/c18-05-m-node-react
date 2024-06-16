@@ -1,38 +1,34 @@
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../Hooks/useAppSelector';
 import style from './styles/dashboard.module.css';
 import Sidebar from './components/Sidebar';
-import Login from '../Login/Index'
-import { logout } from '../../store/slicer/auth.slice';
+import Prophile from '../Prophile/Index';
+import { useAppSelector} from '../../Hooks/useAppSelector'
 
 const Index = () => {
   const [isLeftSidebarVisible, setLeftSidebarVisible] = useState(true);
-  const [isRightSidebarVisible, setRightSidebarVisible] = useState(true);
+  const [isLeftSidebarCollapsed, setLeftSidebarCollapsed] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
 
-  const isAuth = useAppSelector((state) => state.auth.isAuth);
-  console.log(isAuth)  
+  const userData = useAppSelector((state) => state.user.data);
 
-  const Dispatch = useAppDispatch();
-
-
-  
-  const handleLogout = ()=>{
-    Dispatch(logout())
-  }
 
   const toggleLeftSidebar = () => {
     setLeftSidebarVisible(!isLeftSidebarVisible);
   };
 
-  const toggleRightSidebar = () => {
-    setRightSidebarVisible(!isRightSidebarVisible);
+  const toggleLeftSidebarCollapse = () => {
+    setLeftSidebarCollapsed(!isLeftSidebarCollapsed);
   };
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 768);
+      if (window.innerWidth <= 768) {
+        setLeftSidebarVisible(false);
+      } else {
+        setLeftSidebarVisible(true);
+      }
     };
 
     window.addEventListener('resize', handleResize);
@@ -43,45 +39,29 @@ const Index = () => {
     };
   }, []);
 
- 
-
   return (
-    <>
-   {isAuth ? (
-      <div className={style.container}>
-        <Sidebar
-          position="left"
-          visible={!isMobileView || isLeftSidebarVisible}
-          toggleSidebar={toggleLeftSidebar}
-        />
-        <main className={style.mainContent}>
-          {isMobileView && (
-            <button className={`${style.hamburger} ${style.leftHamburger}`} onClick={toggleLeftSidebar}>
-              ☰
-            </button>
-          )}
-          <button className={`${style.hamburger} ${style.rightHamburger}`} onClick={toggleRightSidebar}>
+    <div className={style.containerDashboard}>
+      <Sidebar
+        position="left"
+        visible={!isMobileView || isLeftSidebarVisible}
+        toggleSidebar={toggleLeftSidebar}
+        isCollapsed={isLeftSidebarCollapsed}
+        toggleCollapse={toggleLeftSidebarCollapse}
+      />
+      <main className={style.mainContentDash}>
+        {isMobileView && (
+          <button className={`${style.hamburger} ${style.leftHamburger}`} onClick={toggleLeftSidebar}>
             ☰
           </button>
-          <div className={style.content}>
-            <button
-            onClick={handleLogout}
-            >desconectarse</button>
-            <Outlet />
-          </div>
-        </main>
-        <Sidebar
-          position="right"
-          visible={!isMobileView || isRightSidebarVisible}
-          toggleSidebar={toggleRightSidebar}
-        />
-      </div>
-    ) : (
-      <Login />
-    )}
-    </>
-   
+        )}
+        <div className={style.contentDash}>
+
+          <Outlet />
+        </div>
+      </main>
+    </div>
   );
 };
 
 export default Index;
+

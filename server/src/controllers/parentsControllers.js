@@ -1,4 +1,4 @@
-import { Parents } from "../models/index.js";
+import { Parents, Students } from "../models/index.js";
 import { hahedPassword } from "../utils/hasPassword.js";
 import bcrypt from "bcrypt";
 
@@ -11,6 +11,7 @@ export async function newParents(
   email,
   password,
   address,
+  photo,
   phone
 ) {
   const findParent = await Parents.findOne({ where: { email } });
@@ -25,10 +26,13 @@ export async function newParents(
     email,
     password: parentsHashedPassword,
     address,
+    photo,
     phone,
   });
+  //await newParent.setStudent(studentId);
 
-  const sendEmail = await sendAccountCreationSuccessEmail(email);
+  console.log(newParent, "aca traigo el body");
+  // const sendEmail = await sendAccountCreationSuccessEmail(email);
   return newParent;
 }
 
@@ -51,7 +55,7 @@ export async function changePassword(newPassword, email, password) {
 }
 
 export async function getParents(id) {
-  const parent = await Parents.findByPk(id);
+  const parent = await Parents.findByPk(id, { include: { model: Students } });
   if (!parent) {
     throw new Error("El usuario no existe");
   }
@@ -59,7 +63,7 @@ export async function getParents(id) {
 }
 
 export async function getAllParents() {
-  const parents = await Parents.findAll();
+  const parents = await Parents.findAll({ include: { model: Students } });
   if (!parents) {
     throw new Error("No se encontraron usuarios");
   }
@@ -73,3 +77,44 @@ export async function deleteParents(id) {
   }
   return parent;
 }
+
+export async function updateWithImage(id, updateData) {
+  const parent = await Parents.findOne({ where: { id } });
+
+  if (!parent) {
+    throw new Error("El familiar no existe");
+  }
+
+  await parent.update(updateData);
+
+  return parent;
+}
+
+export async function updateWithoutImage(id, updateData) {
+  const parent = await Parents.findOne({ where: { id } });
+
+  if (!parent) {
+    throw new Error("El familiar no existe");
+  }
+
+  await parent.update(updateData);
+
+  return parent;
+}
+
+export const editarusuario = async (req, res, next) => {
+  try {
+    const { parentId } = req.params;
+    const usuarioEditado = await Parents.findByPk(parentId);
+    if (!usuarioEditado)
+      return res
+        .status(404)
+        .send({ message: "No se pudo encontrar el usuario para editarlo" });
+    usuarioEditado?.update({ ...req.body });
+    res
+      .status(201)
+      .send({ message: "El usuario fue editado", parent: usuarioEditado });
+  } catch (e) {
+    next(e);
+  }
+};

@@ -1,6 +1,7 @@
 import { hahedPassword } from "../utils/hasPassword.js";
 
-import { Students, Subject , Historials, Promedio, Notas } from "../models/index.js";
+import { Students, Subject , Historials, Promedio, Notas, Curso , Parents} from "../models/index.js";
+
 // import Subject from "../models/Subject.js";
 export async function newStudents(
   name,
@@ -10,7 +11,8 @@ export async function newStudents(
   phone,
   birthd,
   registration,
-  grade
+  photo,
+  parentId
 ) {
   const user = await Students.findOne({ where: { email } });
   if (user) {
@@ -26,8 +28,12 @@ export async function newStudents(
     phone,
     birthd,
     registration,
-    grade,
+    photo,
+    parentId
   });
+  await student.setParent(parentId);
+
+  //console.log(student);
   return student;
 }
 
@@ -41,7 +47,7 @@ export async function deleteStudent(id) {
 }
 
 export async function getStudent(id) {
-  const user = await Students.findOne({ where: { id: id } })
+  const user = await Students.findOne({ where: { studentId: id } })
     // include: { model: Historials, model: Promedio, model: Notas  } }
     
 
@@ -53,10 +59,35 @@ export async function getStudent(id) {
 }
 
 export async function getAllStudents() {
-  const students = await Students.findAll({include:{ model: Subject, include:[{ model: Historials },{ model: Promedio}, {model: Notas }] }});
+ 
+  const students = await Students.findAll({include:{ model: Curso, include:[{ model: Subject , include:[{model:Notas}] }] }});
   if (!students) {
     throw new Error("No se encontraron usuarios");
   }
   return students;
 }
 // {[include:{ model: Historials },{ model: Promedio}, {model: Notas }]}
+
+export async function updateWithImage(id, updateData) {
+  const student = await Students.findOne({ where: { studentId: id } });
+
+  if (!student) {
+    throw new Error("El estudiante no existe");
+  }
+  
+  await student.update(updateData);
+
+  return student;
+}
+
+export async function updateWithoutImage(id, updateData) {
+  const student = await Students.findOne({ where: { studentId: id } });
+
+  if (!student) {
+    throw new Error("El estudiante no existe");
+  }
+  
+  await student.update(updateData);
+
+  return student;
+}
